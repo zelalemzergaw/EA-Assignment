@@ -16,6 +16,7 @@ public class Main {
        tr.begin();
         Person per= new Person(1L,"zelalem","zergaw");
         em.persist(per);
+
         tr.commit();
         em.close();
 
