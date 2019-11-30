@@ -9,7 +9,7 @@
         <module name="Lab_2_BasicOperations" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8">
       <module name="Lab_2_BasicOperations" target="1.8" />
     </bytecodeTargetLevel>
   </component>

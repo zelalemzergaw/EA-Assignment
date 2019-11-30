@@ -2,32 +2,39 @@ package edu.mum.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.*;
+import javax.transaction.Transactional;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Version;
-
+@Entity(name = "Users")
   public class User implements Serializable  {
 
-    private Long id = null;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false, length = 20)
+	private Long id = null;
 
+
+	@Column(name = "FIRSTNAME",nullable = false)
      private String firstName;
 
+	@Column(name = "LASTNAME",nullable = false)
      private String lastName;
 
+	@Column(name = "EMAIL",nullable = false)
      private String email;
 
+	@Column(name = "RATING",nullable = false,length = 11)
      private int rating = 0;
 
+	@Column(name = "IS_ADMIN",nullable = false)
      private boolean admin = false;
      
      @Version
+	 @Column(name = "version",nullable = false,length = 11)
      private int version = 0;
 
+     @Temporal(TemporalType.DATE)
+	 @Column(name = "last_login",nullable = true)
      private Date lastLogin;
      
 	public Long getId() {

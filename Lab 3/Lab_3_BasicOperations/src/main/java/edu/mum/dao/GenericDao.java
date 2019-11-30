@@ -1,5 +1,7 @@
 package edu.mum.dao;
 
+import edu.mum.domain.User;
+
 import java.util.List;
 
 public interface GenericDao<T> {
@@ -20,6 +22,9 @@ public interface GenericDao<T> {
     T update(T t);   
     
     List<T> findAll();
+    void flush();
+    void refresh(User user);
+    void clear();
 
     
     

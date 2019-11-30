@@ -1,16 +1,25 @@
 package edu.mum.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
- 
- 
+
+@Entity(name = "authentication")
 public class UserCredentials {
 
+ 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+ 	@Column(name="USER",nullable = false)
   	String username;
+
+	@Column(name="PASSWORD",nullable = false)
  	String password;
+
+	@Transient
  	String verifyPassword;
+
+	@Column(name="enabled",nullable = true)
 	Boolean enabled;
 
  	public String getUsername() {

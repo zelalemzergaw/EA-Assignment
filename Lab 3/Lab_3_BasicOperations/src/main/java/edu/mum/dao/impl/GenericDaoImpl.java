@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import edu.mum.dao.GenericDao;
 import edu.mum.dao.UserDao;
+import edu.mum.domain.User;
 
 
 /*@SuppressWarnings("unchecked")
@@ -48,7 +49,22 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 		      return entityManager.createQuery( "from " + daoType.getName() )
 		       .getResultList();
 		   }
-	
+
+	@Override
+	public void flush() {
+		entityManager.flush();
+	}
+
+	@Override
+	public void refresh(User user) {
+		entityManager.refresh(user);
+	}
+
+	@Override
+	public void clear() {
+		entityManager.clear();
+	}
+
 	@Override
 	public T update( T entity ){
 	      return entityManager.merge( entity );
