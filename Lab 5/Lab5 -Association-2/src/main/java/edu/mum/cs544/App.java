@@ -18,7 +18,7 @@ public class App {
         Employee employee1=new Employee("Chris Bailey",56);
         Employee employee2=new Employee("Hank Moody",48);
 
-        Department department1=new Department("Computer Science","Mclaughin Building");
+        Department department1=new Department("Computer Science","Verill Hall Building");
 
         department1.addEmployee(employee1);
         department1.addEmployee(employee2);
@@ -51,7 +51,7 @@ public class App {
         em.getTransaction().begin();
         Reservation reservation1=new Reservation("Hilton Hotel","Table", LocalDate.of(2019,9,16),24);
         Reservation reservation2=new Reservation("United Airlines","Seat",LocalDate.of(2019,10,29),46);
-        Customer customer=new Customer("Abeba Ibrahim","Columbus,Ohio");
+        Customer customer=new Customer("Mohamed Ibrahim","Columbus,Ohio");
         reservation1.addBook(book1);
         reservation2.addBook(book1);
         customer.addReservation(reservation1);
