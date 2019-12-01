@@ -1,10 +1,11 @@
 package edu.mum.cs544;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.Data;
+
+import javax.persistence.*;
 
 @Entity
+@Data
 public class Car {
 	@Id
 	@GeneratedValue
@@ -12,6 +13,10 @@ public class Car {
 	private String brand;
 	private String year;
 	private double price;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	//@JoinTable(name = "car_id",joinColumns = {@JoinColumn(name = "car_id")},inverseJoinColumns = {@JoinColumn(name = "Owner_id")})
+	@JoinColumn(name = "owner_id")
+	private Owner owner;
 
 	public Car() {
 	}
