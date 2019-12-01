@@ -2,7 +2,6 @@ package edu.mum.cs544;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App 
 {
@@ -12,5 +11,6 @@ public class App
 
 		customerService.addCustomer("Frank Brown", "fbrown@acme.com",
 				"mainstreet 5", "Chicago", "60613");
+
 	}
 }
