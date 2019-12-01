@@ -2,30 +2,27 @@ package edu.mum.cs544.bank.service;
 
 import java.util.Collection;
 
-import edu.mum.cs544.bank.dao.AccountDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import edu.mum.cs544.bank.dao.IAccountDAO;
 import edu.mum.cs544.bank.domain.Account;
 import edu.mum.cs544.bank.domain.Customer;
 import edu.mum.cs544.bank.jms.IJMSSender;
-import edu.mum.cs544.bank.jms.JMSSender;
 import edu.mum.cs544.bank.logging.ILogger;
-import edu.mum.cs544.bank.logging.Logger;
 
-
-
-
-
+@Service
 public class AccountService implements IAccountService {
+	@Autowired
 	private IAccountDAO accountDAO;
+	@Autowired
 	private ICurrencyConverter currencyConverter;
+	@Autowired
 	private IJMSSender jmsSender;
+	@Autowired
 	private ILogger logger;
 	
 	public AccountService(){
-		accountDAO=new AccountDAO();
-		currencyConverter= new CurrencyConverter();
-		jmsSender =  new JMSSender();
-		logger = new Logger();
 	}
 
 	public Account createAccount(long accountNumber, String customerName) {

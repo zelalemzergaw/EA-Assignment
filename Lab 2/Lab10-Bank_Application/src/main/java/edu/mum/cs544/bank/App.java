@@ -2,16 +2,21 @@ package edu.mum.cs544.bank;
 
 import java.util.Collection;
 
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import edu.mum.cs544.bank.domain.Account;
 import edu.mum.cs544.bank.domain.AccountEntry;
 import edu.mum.cs544.bank.domain.Customer;
-import edu.mum.cs544.bank.service.AccountService;
 import edu.mum.cs544.bank.service.IAccountService;
 
 
 public class App {
 	public static void main(String[] args) {
-		IAccountService accountService = new AccountService();
+		ConfigurableApplicationContext context = 
+			new AnnotationConfigApplicationContext(Config.class);
+		IAccountService accountService = context.getBean(IAccountService.class);
+		
 		// create 2 accounts;
 		accountService.createAccount(1263862, "Frank Brown");
 		accountService.createAccount(4253892, "John Doe");
@@ -43,8 +48,8 @@ public class App {
 			System.out.printf("%30s%30s%20.2f\n\n", "", "Current Balance:",
 					account.getBalance());
 		}
+		context.close();
 	}
-
 }
 
 
