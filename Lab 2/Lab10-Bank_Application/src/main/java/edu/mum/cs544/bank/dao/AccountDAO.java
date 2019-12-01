@@ -2,8 +2,11 @@ package edu.mum.cs544.bank.dao;
 
 import java.util.*;
 
+import org.springframework.stereotype.Repository;
+
 import edu.mum.cs544.bank.domain.Account;
 
+@Repository
 public class AccountDAO implements IAccountDAO {
 	Collection<Account> accountlist = new ArrayList<Account>();
 
