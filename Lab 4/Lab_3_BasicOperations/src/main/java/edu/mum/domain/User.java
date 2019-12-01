@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 	private Long id = null;
 
 
-	@Column(name = "FIRSTNAME",nullable = false)
+	@Column(name = "firstname")
      private String firstName;
 
 	@Column(name = "LASTNAME",nullable = false)
