@@ -1,24 +1,31 @@
 package edu.mum.cs544;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
+
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 
 public class App {
 
     private static EntityManagerFactory emf;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(MysqlxDatatypes.Scalar.String[] args) throws Exception {
         emf = Persistence.createEntityManagerFactory("cs544");
 
         long start = System.nanoTime();
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
+//        TypedQuery<Owner> query = em.createQuery("from Owner", Owner.class);
+//        TypedQuery<Owner> query = em.createQuery("select o from Owner o join fetch o.pets", Owner.class);
+//        TypedQuery<Owner> query = em.createNamedQuery("Owner.ownerList", Owner.class);
+
+
+        EntityGraph<Owner> graph = em.createEntityGraph(Owner.class);
+        graph.addAttributeNodes("pets");
         TypedQuery<Owner> query = em.createQuery("from Owner", Owner.class);
+        query.setHint("javax.persistence.fetchgraph", graph);
         List<Owner> ownerlist = query.getResultList();
         for (Owner o : ownerlist) {
             o.getPets().size();

@@ -6,11 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Lab7-Optimization" />
+        <module name="Lab7Optimization" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Lab7-Optimization" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
